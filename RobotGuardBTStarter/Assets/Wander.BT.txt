@@ -1,0 +1,4 @@
+tree("Root") //Raiz - arvore de decisao
+	sequence //sequencia de açoes a serem tomadas - açoes folha - açoes feitas a partir da raiz
+		PickRandomDestination //Metodo criado em AI
+		MoveToDestination //Metodo criado em AI
