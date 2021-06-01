@@ -1,19 +1,36 @@
-tree("Root")
-	parallel
-		repeat mute tree("Patrol")
-		repeat mute tree("Dead")
+//Comportamento de métodos, que são criados dentro do AI.cs
 
-tree("Patrol")
-	fallback
-		tree("Attack")
-		while IsHealthLossThan(40.0)
+tree("Root") //raiz
+	parallel //divisões de comportamentos paralelos na arvore de comportamentos
+		repeat mute tree("Patrol") //repeat mute - "repete e se cala"
+		repeat mute tree("Dead") //chama "galho" da arvore "Dead"
+
+tree("Patrol") //Comportamento de patrulha
+	fallback //faz com que se comportamento deu errado, ele já va para o outro
+		tree("Attack") //chamando comportamento de ataque
+		while IsHealthLessThan(40.0) //Enquanto vida com menos de 40, abre sequencia de "Wander"
 			fallback
-				tree("Wander")
+				tree("Wander") //chamando comportamento de wander
 
-tree("Attack")
-	while SeePlayer
-		sequence
+tree("Attack") //Criando comportamento de ataque
+	while SeePlayer //condição - se consegue ver o player
+		sequence //sequencia de métodos a serem feitos
 			TargetPlayer
 			LookAtTarget
 			Wait(0.5)
 			Fire
+
+tree("Dead") //Comportamento de morte
+	sequence //sequencia de métodos
+		IsHealthLessThan(0.1)//verifica se chegou na condição de vida de 0.1
+		Explode
+
+tree("Wander")
+	sequence
+		PickRandomDestination
+		MoveToDestination
+
+
+
+//comando "sequence" - faz as ações em sequencia e espera ação ser concluida para ir para próxima
+//comando "fallback" - não necessita que um comportamento de certo para iniciar outro

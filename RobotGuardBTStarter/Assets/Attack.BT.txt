@@ -1,6 +1,6 @@
 tree("Root")
-	while SeePlayer
-		sequence
+	while SeePlayer //apenas se consegue ver o player
+		sequence //fazer em sequencia
 			TargetPlayer
 			LookAtTarget
 			Fire

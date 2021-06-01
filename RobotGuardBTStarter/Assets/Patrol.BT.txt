@@ -1,6 +1,6 @@
-tree("Root")
-	sequence
-		PickDestination(-100, -100)
+tree("Root") //root faz em loop
+	sequence //fazer açoes em sequencia
+		PickDestination(-100, -100) //vai até o ponto e assim por diante
 		MoveToDestination
 		PickDestination(-100, 100)
 		MoveToDestination

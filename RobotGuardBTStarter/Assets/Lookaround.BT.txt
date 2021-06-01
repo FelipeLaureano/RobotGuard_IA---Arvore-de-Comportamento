@@ -1,10 +1,10 @@
 tree("Root")
-	sequence
-		//random
-		random(5,1,1,1)
-			Turn(90.0)
+	sequence //fazer em sequencia
+		//random - variações de ações randomicas
+		random(5,1,1,1) //ponto A sorteia 5x mais que as outras
+			Turn(90.0) //posicionamentos angulares:
 			Turn(-90.0)
 			Turn(145.0)
 			Turn(-27.0)
 		LookAtTarget
-		WaitRandom(1.0,5.0)
+		WaitRandom(2.0,5.0) //determina quanto tempo ele olha para a direção
